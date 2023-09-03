@@ -1,0 +1,51 @@
+<%- include('../includes/head.ejs') %>
+<%- include('../includes/nav.ejs') %>
+
+<div class="container-fluid">
+  <% if (edit) { %>
+    <form action="/edit-product/<%= product.id %>" method="POST" enctype="multipart/form-data">
+  <% } else { %>
+    <form action="/add-product" method="POST" enctype="multipart/form-data">
+  <% } %>
+
+    <div class="container-sm add-product">
+      <% if (message.length > 0) { %>
+        <div class="alert alert-<%= type %>">
+          <%= message %>
+        </div>
+      <% } %>
+
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="<%= edit ? product.title : '' %>">
+      </div>
+
+      <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <input type="text" class="form-control" id="category" name="category" placeholder="Category" value="<%= edit ? product.category : '' %>">
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">Image</label>
+        <input class="form-control" type="file" id="image" name="image">
+        <% if (edit && product.image) { %>
+          <input type="hidden" name="oldImage" value="<%= product.image %>">
+        <% } %>
+      </div>
+
+      <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input type="number" class="form-control" id="price" name="price" placeholder="Price" value="<%= edit ? product.price : '' %>">
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" name="description" rows="3" placeholder="Description"><%= edit ? product.description : '' %></textarea>
+      </div>
+
+      <button class="btn btn-outline-success" type="submit"><%= edit ? 'Update Product' : 'Add Product' %></button>
+    </div>
+  </form>
+</div>
+
+<%- include('../includes/end.ejs') %>

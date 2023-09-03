@@ -1,0 +1,14 @@
+<%-include('./includes/head.ejs')%>
+    <div class="container-sm m-1">
+      <h1>welcome 
+        
+        <% if (message.length > 0) { %>
+          <div class="alert alert-<%=type%>">
+            <%= message %>
+          </div>
+        <% } %>
+      </h1>
+    </div>
+    <%-include('./includes/nav.ejs')%>
+
+    <%-include('./includes/end.ejs')%>

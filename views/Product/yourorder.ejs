@@ -1,0 +1,28 @@
+<%-include('../includes/head.ejs')%>
+<link rel="stylesheet"href="/css/card.css">
+<%-include('../includes/nav.ejs')%>
+
+<%products.forEach((list)=>{%>
+ 
+
+      <div class="col-4  view">
+        <div class="card mx-3 mt-4 ">
+            <img class='mx-auto img-thumbnail'
+            src="images/<%= list.image %>"
+            width="auto" height="auto" alt="Card image cap">
+            <div class="card-body text-center mx-auto">
+                <div class='cvp'>
+                    <input type="hidden"id="<%=list.userId%>">
+                    <h5 class="card-title font-weight-bold"> <%= list.title %></h5>
+                    <p class="card-text">Price ₹<%=list.price%></p>
+                    <p class="hidden d-none"><%=list.id%></p>
+                    <p class="card-text">Quantity <%=list.quantity%></p>               
+
+                </div>
+            </div>
+        </div>
+ 
+      </div>
+                <%})%>
+            
+<%-include('../includes/end.ejs')%>

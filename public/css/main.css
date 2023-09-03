@@ -1,0 +1,10 @@
+.title-product{
+    width:100%;
+
+}
+.add-product{
+    margin: auto;
+    width: 40%;
+    border: 3px ;
+    padding: 10px;
+}

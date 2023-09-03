@@ -1,0 +1,34 @@
+<%-include('../includes/head.ejs')%>
+<link rel="stylesheet"href="/css/card.css">
+<%-include('../includes/nav.ejs')%>
+
+<%products.forEach((list)=>{%>
+ 
+
+      <div class="col-4  view">
+        <div class="card mx-3 mt-4 ">
+            <img class='mx-auto img-thumbnail'
+            src="images/<%= list.image %>"
+            width="auto" height="auto" alt="Card image cap">
+            <div class="card-body text-center mx-auto">
+                <div class='cvp'>
+                    <input type="hidden"id="<%=list.userId%>">
+                    <h5 class="card-title font-weight-bold"> <%= list.title %></h5>
+                    <p class="card-text">₹<%=list.price%></p>
+                    <p class="hidden d-none"><%=list.id%></p>
+                    <%if(edit&&isAdmin&&isAuth){%>
+                    <a href="/edit-product/<%=list.id%>" class="btn details px-auto">Edit</a><br />
+                    <a href="/delete-product/<%=list.id%>" class="btn cart px-auto">DELETE</a>
+                    <input type="hidden"value="<%=list.id%>">
+                    <%}else{%>
+                    <a href="/product-detail/<%=list.id%>" class="btn details px-auto">view details</a><br />
+                    <a href="/product-cart/<%=list.id%>" class="btn cart px-auto">ADD TO CART</a>
+            <%}%>
+                </div>
+            </div>
+        </div>
+ 
+      </div>
+                <%})%>
+            
+<%-include('../includes/end.ejs')%>
